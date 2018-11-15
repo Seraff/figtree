@@ -89,6 +89,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 
     private SearchPanel filterPanel;
     private JPopupMenu filterPopup;
+    private JLabel searchResultsLabel;
 
     public FigTreeFrame(String title) {
         super();
@@ -392,6 +393,8 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
                 for (TreeViewer.TextSearchType searchType : TreeViewer.TextSearchType.values()) {
                     if (searchType.toString().equals(value)) {
                         treeViewer.selectTaxa(searchType, searchString, false);
+                        int cnt = treeViewer.getSelectedTips().size();
+                        searchResultsLabel.setText(String.format("%d tips found", cnt));
                     }
                 }
             }
@@ -402,14 +405,17 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
              */
             public void searchStopped() {
                 treeViewer.clearSelectedTaxa();
+                searchResultsLabel.setText(" ");
             }
         });
 
-        JPanel panel3 = new JPanel(new FlowLayout());
+        Box searchBox = Box.createVerticalBox();
+        searchResultsLabel = new JLabel(" ", SwingConstants.CENTER);
+        searchResultsLabel.setFont(UIManager.getFont("SmallSystemFont"));
 
-        panel3.add(filterPanel);
-
-        toolBar.addComponent(panel3);
+        searchBox.add(filterPanel);
+        searchBox.add(searchResultsLabel);
+        toolBar.addComponent(searchBox);
 
         statusBar = new StatusBar("FigTree");
         statusBar.setBorder(BorderFactory.createCompoundBorder(
