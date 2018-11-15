@@ -73,6 +73,8 @@ public class DefaultTreeViewer extends TreeViewer {
         });
 
         JScrollPane scrollPane = new JScrollPane(treePane, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(5);
+        scrollPane.getHorizontalScrollBar().setUnitIncrement(5);
         scrollPane.setMinimumSize(new Dimension(150, 150));
 
         scrollPane.setBorder(null);
