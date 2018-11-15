@@ -105,6 +105,8 @@ public abstract class TreeViewer extends JPanel implements Printable {
 
     public abstract void setDragMode(TreePaneSelector.DragMode dragMode);
 
+    public abstract TreePaneSelector.DragMode getDragMode();
+
     public abstract void setTipLabelPainter(LabelPainter<Node> tipLabelPainter);
 
     public abstract void setNodeLabelPainter(LabelPainter<Node> nodeLabelPainter);

@@ -28,6 +28,8 @@ import jam.util.IconUtils;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.MouseWheelEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -109,9 +111,9 @@ public class TreeViewerController extends AbstractController {
 		rectangularTreeToggle.setToolTipText("Rectangular tree layout");
 		polarTreeToggle.setToolTipText("Polar tree layout");
 		radialTreeToggle.setToolTipText("Radial tree layout");
-        rectangularTreeToggle.setFocusable(false);
-        polarTreeToggle.setFocusable(false);
-        radialTreeToggle.setFocusable(false);
+				rectangularTreeToggle.setFocusable(false);
+				polarTreeToggle.setFocusable(false);
+				radialTreeToggle.setFocusable(false);
 		rectangularTreeToggle.putClientProperty("Quaqua.Button.style", "toggleWest");
 		rectangularTreeToggle.putClientProperty("JButton.buttonType", "segmentedTextured");
 		rectangularTreeToggle.putClientProperty("JButton.segmentPosition", "first");
@@ -196,20 +198,20 @@ public class TreeViewerController extends AbstractController {
 		optionsPanel.addSpanningComponent(layoutPanel);
 
 		rectangularTreeToggle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                if (rectangularTreeToggle.isSelected()) setTreeLayout(TreeLayoutType.RECTILINEAR);
-            }
-        });
+						@Override
+						public void actionPerformed(ActionEvent actionEvent) {
+								if (rectangularTreeToggle.isSelected()) setTreeLayout(TreeLayoutType.RECTILINEAR);
+						}
+				});
 		polarTreeToggle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+						@Override
+						public void actionPerformed(ActionEvent actionEvent) {
 				if (polarTreeToggle.isSelected()) setTreeLayout(TreeLayoutType.POLAR);
 			}
 		});
 		radialTreeToggle.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+						@Override
+						public void actionPerformed(ActionEvent actionEvent) {
 				if (radialTreeToggle.isSelected()) setTreeLayout(TreeLayoutType.RADIAL);
 			}
 		});
@@ -229,6 +231,22 @@ public class TreeViewerController extends AbstractController {
 				KeyStroke.getKeyStroke("meta alt MINUS"), "decreaseSecondaryZoom");
 
 		optionsPanel.getActionMap().put("resetZoom", resetZoomAction);
+
+		treeViewer.getContentPane().addMouseWheelListener(new MouseWheelListener() {
+			@Override
+			public void mouseWheelMoved(MouseWheelEvent e) {
+					int notches = e.getWheelRotation();
+					int value = zoomSlider.getValue();
+
+					if (treeViewer.getDragMode() == TreePaneSelector.DragMode.SCROLL) {
+						if (notches < 0) {
+							zoomSlider.setValue(value + 20);
+						} else {
+							zoomSlider.setValue(value - 20);
+						}
+					}
+			}
+		});
 
 	}
 
@@ -268,7 +286,7 @@ public class TreeViewerController extends AbstractController {
 				radialTreeToggle.setSelected(true);
 				break;
 		}
-        setTreeLayout(layout);
+				setTreeLayout(layout);
 
 		zoomSlider.setValue((Integer)settings.get(CONTROLLER_KEY + "." + ZOOM_KEY));
 		verticalExpansionSlider.setValue((Integer)settings.get(CONTROLLER_KEY + "." + EXPANSION_KEY));

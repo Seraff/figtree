@@ -633,6 +633,10 @@ public class DefaultTreeViewer extends TreeViewer {
         treePaneSelector.setDragMode(dragMode);
     }
 
+    public TreePaneSelector.DragMode getDragMode() {
+        return treePaneSelector.getDragMode();
+    }
+
     // A load of delegated method calls through to treePane (which is now hidden outside the package).
     public void setTipLabelPainter(LabelPainter<Node> tipLabelPainter) {
         treePane.setTipLabelPainter(tipLabelPainter);
