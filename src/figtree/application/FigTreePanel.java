@@ -157,10 +157,20 @@ public class FigTreePanel extends JPanel {
         scrollPane.setViewportView(controlPalette.getPanel());
 //        add(scrollPane, BorderLayout.WEST);
 
+
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scrollPane, slideOpenPanel);
         splitPane.putClientProperty("Quaqua.SplitPane.style", "bar");
         splitPane.setOneTouchExpandable(true);
-        add(splitPane, BorderLayout.CENTER);
+
+        // Right panel (annotation)
+        JScrollPane annotationPanel = new JScrollPane();
+        annotationPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 1, Color.GRAY));
+        annotationPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        annotationPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        JSplitPane outSplitPane  = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, splitPane, annotationPanel);
+        outSplitPane.setOneTouchExpandable(true);
+
+        add(outSplitPane, BorderLayout.CENTER);
         int w = splitPane.getLeftComponent().getPreferredSize().width;
         splitPane.getLeftComponent().setMinimumSize(new Dimension(w, 0));
 
