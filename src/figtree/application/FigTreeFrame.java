@@ -423,6 +423,9 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         JPanel topPanel = new JPanel(new BorderLayout(0,0));
         topPanel.add(toolBar, BorderLayout.NORTH);
 
+        TaxonomyToolbar taxonomyBar = new TaxonomyToolbar(this, treeViewer);
+        topPanel.add(taxonomyBar, BorderLayout.SOUTH);
+
         getContentPane().setLayout(new java.awt.BorderLayout(0, 0));
         getContentPane().add(topPanel, BorderLayout.NORTH);
 
