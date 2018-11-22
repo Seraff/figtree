@@ -133,6 +133,9 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         Icon settingsToolIcon = IconUtils.getIcon(this.getClass(), "images/projectTool.png");
         Icon colourToolIcon = IconUtils.getIcon(this.getClass(), "images/coloursTool.png");
 
+        Icon eukrefAnnotateBranchIcon = IconUtils.getIcon(this.getClass(), "images/annotateBranch.png");
+        Icon eukrefAnnotateTaxaIcon = IconUtils.getIcon(this.getClass(), "images/annotateBranch.png");
+
         Icon nextIcon = IconUtils.getIcon(this.getClass(), "images/next.png");
         Icon prevIcon = IconUtils.getIcon(this.getClass(), "images/prev.png");
 
@@ -211,6 +214,26 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         findToolButton.setFocusable(false);
         toolBar.addComponent(findToolButton);
         findToolButton.setEnabled(true);
+
+        toolBar.addSeparator();
+
+        // EUKREF STUFF
+
+        final ToolbarAction eukrefAnnotateBranchToolbarAction = new ToolbarAction("Branch name", "Annotate branch...", eukrefAnnotateBranchIcon) {
+            public void actionPerformed(ActionEvent e){
+                eukrefAnnotateBranchAction.actionPerformed(e);
+            }
+        };
+        JButton eukrefAnnotateBranchButton = new ToolbarButton(eukrefAnnotateBranchToolbarAction, true);
+        eukrefAnnotateBranchButton.setFocusable(false);
+        toolBar.add(eukrefAnnotateBranchButton);
+
+        final EukrefAnnotateTaxaAction eukrefAnnotateTaxaToolbarAction = new EukrefAnnotateTaxaAction("Build taxa", "Annotate taxa...", eukrefAnnotateTaxaIcon);
+        eukrefAnnotateTaxaToolbarAction.initTreeViewer(treeViewer);
+        JButton eukrefAnnotateTipButton = new ToolbarButton(eukrefAnnotateTaxaToolbarAction, true);
+        eukrefAnnotateTipButton.setFocusable(false);
+        toolBar.add(eukrefAnnotateTipButton);
+
 
 //		final ToolbarAction infoToolbarAction = new ToolbarAction("Get Info", "Get Info...", infoToolIcon) {
 //			public void actionPerformed(ActionEvent e){
@@ -423,9 +446,6 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         JPanel topPanel = new JPanel(new BorderLayout(0,0));
         topPanel.add(toolBar, BorderLayout.NORTH);
 
-        TaxonomyToolbar taxonomyBar = new TaxonomyToolbar(this, treeViewer);
-        topPanel.add(taxonomyBar, BorderLayout.SOUTH);
-
         getContentPane().setLayout(new java.awt.BorderLayout(0, 0));
         getContentPane().add(topPanel, BorderLayout.NORTH);
 
@@ -436,6 +456,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         TreeSelectionListener l2 = new TreeSelectionListener() {
             public void selectionChanged() {
                 boolean hasSelection = treeViewer.hasSelection();
+
                 cartoonToolbarAction.setEnabled(hasSelection);
                 cartoonAction.setEnabled(hasSelection);
                 collapseToolbarAction.setEnabled(hasSelection);
@@ -461,6 +482,16 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
                 colourToolbarAction.setEnabled(hasSelection);
                 colourAction.setEnabled(hasSelection);
                 clearColouringAction.setEnabled(hasSelection);
+
+                TreePaneSelector.SelectionMode mode = treeViewer.getSelectionMode();
+                boolean isNode = (mode == TreePaneSelector.SelectionMode.NODE);
+                boolean isOnly = (treeViewer.getSelectedNodes().size() == 1);
+                eukrefAnnotateBranchToolbarAction.setEnabled(isNode && isOnly && hasSelection);
+                eukrefAnnotateBranchAction.setEnabled(isNode && isOnly && hasSelection);
+
+                boolean isTaxa = (mode == TreePaneSelector.SelectionMode.TAXA);
+                eukrefAnnotateTaxaToolbarAction.setEnabled(isTaxa && hasSelection);
+
             }
         };
         treeViewer.addTreeSelectionListener(l2);
@@ -612,6 +643,27 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 
             treeViewer.annotateSelected(code, value);
             setDirty();
+        }
+    }
+
+    private void eukrefAnnotateBranch() {
+        treeViewer.setToolMode(TreePaneSelector.ToolMode.SELECT);
+
+        if (eukrefBranchAnnotationDialog == null) {
+            eukrefBranchAnnotationDialog = new EukrefBranchAnnotationDialog(this);
+        }
+
+        Set<Node> nodes = treeViewer.getSelectedNodes();
+
+        if (nodes.size() == 1){
+            Attributable branch = nodes.iterator().next();
+
+            if (eukrefBranchAnnotationDialog.showDialog(branch) != JOptionPane.CANCEL_OPTION) {
+                String code = EukrefBranchAnnotationDialog.CODE;
+                Object value = eukrefBranchAnnotationDialog.getValue();
+                treeViewer.annotateSelected(code, value);
+                setDirty();
+            }
         }
     }
 
@@ -1655,6 +1707,10 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         return findAction;
     }
 
+    public Action getEukrefAnnotateBranchAction() {
+        return eukrefAnnotateBranchAction;
+    }
+
     private AbstractAction importAction = new AbstractAction("Import Annotations...") {
         public void actionPerformed(ActionEvent ae) {
             doImport();
@@ -1855,6 +1911,12 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         }
     };
 
+    private AbstractAction eukrefAnnotateBranchAction = new AbstractAction("Annotate branch") {
+        public void actionPerformed(ActionEvent ae) {
+            eukrefAnnotateBranch();
+        }
+    };
+
 //	private AbstractAction findNextAction = new AbstractAction("Find Next") {
 //		public void actionPerformed(ActionEvent ae) {
 //			doFindNext();
@@ -1873,4 +1935,5 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
     private AnnotationDialog annotationDialog = null;
     private AnnotationDialog copyAnnotationDialog = null;
     private SelectAnnotationDialog selectAnnotationDialog = null;
+    private EukrefBranchAnnotationDialog eukrefBranchAnnotationDialog = null;
 }
