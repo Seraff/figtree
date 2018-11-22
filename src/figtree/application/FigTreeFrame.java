@@ -133,8 +133,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         Icon settingsToolIcon = IconUtils.getIcon(this.getClass(), "images/projectTool.png");
         Icon colourToolIcon = IconUtils.getIcon(this.getClass(), "images/coloursTool.png");
 
-        Icon eukrefAnnotateBranchIcon = IconUtils.getIcon(this.getClass(), "images/annotateBranch.png");
-        Icon eukrefAnnotateTaxaIcon = IconUtils.getIcon(this.getClass(), "images/annotateBranch.png");
+        Icon eukrefIcon = IconUtils.getIcon(this.getClass(), "images/eukref.png");
 
         Icon nextIcon = IconUtils.getIcon(this.getClass(), "images/next.png");
         Icon prevIcon = IconUtils.getIcon(this.getClass(), "images/prev.png");
@@ -219,7 +218,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 
         // EUKREF STUFF
 
-        final ToolbarAction eukrefAnnotateBranchToolbarAction = new ToolbarAction("Branch name", "Annotate branch...", eukrefAnnotateBranchIcon) {
+        final ToolbarAction eukrefAnnotateBranchToolbarAction = new ToolbarAction("Branch name", "Annotate branch...", eukrefIcon) {
             public void actionPerformed(ActionEvent e){
                 eukrefAnnotateBranchAction.actionPerformed(e);
             }
@@ -228,11 +227,25 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         eukrefAnnotateBranchButton.setFocusable(false);
         toolBar.add(eukrefAnnotateBranchButton);
 
-        final EukrefAnnotateTaxaAction eukrefAnnotateTaxaToolbarAction = new EukrefAnnotateTaxaAction("Build taxa", "Annotate taxa...", eukrefAnnotateTaxaIcon);
+
+        final EukrefAnnotateTaxaAction eukrefAnnotateTaxaToolbarAction = new EukrefAnnotateTaxaAction("Build taxa", "Annotate taxa...", eukrefIcon);
         eukrefAnnotateTaxaToolbarAction.initTreeViewer(treeViewer);
         JButton eukrefAnnotateTipButton = new ToolbarButton(eukrefAnnotateTaxaToolbarAction, true);
         eukrefAnnotateTipButton.setFocusable(false);
         toolBar.add(eukrefAnnotateTipButton);
+
+
+        final EukrefRemoveTaxaAction eukrefRemoveTaxaAction = new EukrefRemoveTaxaAction("Drop taxa", "Mark taxa for removal...", eukrefIcon);
+        eukrefRemoveTaxaAction.initTreeViewer(treeViewer);
+        JButton eukrefRemoveTaxaButton = new ToolbarButton(eukrefRemoveTaxaAction, true);
+        eukrefRemoveTaxaButton.setFocusable(false);
+        toolBar.add(eukrefRemoveTaxaButton);
+
+        final EukrefCleanFastaAction eukrefCleanFastaAction = new EukrefCleanFastaAction("Clean fasta", "Clean sequences in fasta file...", eukrefIcon);
+        eukrefCleanFastaAction.initEnvironment(this, treeViewer);
+        JButton eukrefCleanFastaButton = new ToolbarButton(eukrefCleanFastaAction, true);
+        eukrefCleanFastaButton.setFocusable(false);
+        toolBar.add(eukrefCleanFastaButton);
 
 
 //		final ToolbarAction infoToolbarAction = new ToolbarAction("Get Info", "Get Info...", infoToolIcon) {
@@ -253,7 +266,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 //        toolBar.addComponent(settingsToolButton);
 //        settingsToolButton.setEnabled(false);
 
-        toolBar.addSeparator();
+        toolBar.addFlexibleSpace();
 
         Box box1 = Box.createHorizontalBox();
         final JToggleButton toggle1 = new JToggleButton("Node");
@@ -491,6 +504,8 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 
                 boolean isTaxa = (mode == TreePaneSelector.SelectionMode.TAXA);
                 eukrefAnnotateTaxaToolbarAction.setEnabled(isTaxa && hasSelection);
+
+                eukrefRemoveTaxaAction.setEnabled(isTaxa && hasSelection);
 
             }
         };

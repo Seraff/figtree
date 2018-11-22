@@ -21,6 +21,7 @@ package figtree.treeviewer;
 
 import figtree.treeviewer.*;
 
+import java.util.*;
 import java.awt.event.*;
 import jam.toolbar.*;
 import javax.swing.*;
@@ -45,60 +46,28 @@ import jebl.evolution.trees.*;
  * $LastChangedDate$
  * $LastChangedRevision$
  */
-public class EukrefAnnotateTaxaAction extends EukrefBaseAction {
-  public final static String NAME_ATTR = "clade_name";
-  public final static String TAXONOMY_ATTR = "taxonomy";
+public class EukrefRemoveTaxaAction extends EukrefBaseAction {
+  public final static String ATTR = "eukref_remove";
 
-  public EukrefAnnotateTaxaAction(String label, String toolTipText, Icon icon){
+  public EukrefRemoveTaxaAction(String label, String toolTipText, Icon icon){
     super(label, toolTipText, icon);
   }
 
 	public void actionPerformed(ActionEvent e){
-    if (treeViewer.hasSelection()){
-      RootedTree tree = (RootedTree)treeViewer.getCurrentTree();
+    Set<Node> nodes = treeViewer.getSelectedTips();
 
-      for (Node node : treeViewer.getSelectedTips()){
-        ArrayList<Node> taxonomy = new ArrayList<Node>();
+    if (nodes.size() > 0){
+      for (Node node : nodes) {
+        Object value = node.getAttribute(ATTR);
 
-        // Gathering ancestors
-        taxonomy.add(node);
-        Node currentNode = node;
-        while (!tree.isRoot(currentNode)){
-          Node parent = tree.getParent(currentNode);
-          currentNode = parent;
-          taxonomy.add(parent);
-        }
-
-        Collections.reverse(taxonomy);
-        String label = buildTaxonomy(taxonomy);
-
-        Taxon taxon = tree.getTaxon(node);
-        if (!taxon.getName().isEmpty() && !label.isEmpty()) {
-          label += ";";
-          label += taxon.getName();
-          node.setAttribute(TAXONOMY_ATTR, label);
+        if (value != null && value.toString() == "true"){
+          node.removeAttribute(ATTR);
+        } else {
+          node.setAttribute(ATTR, true);
         }
       }
 
       treeViewer.fireAnnotationsChanged();
     }
-  }
-
-  private String buildTaxonomy(ArrayList<Node> nodes){
-    String label = "";
-
-    for (Node node : nodes) {
-      Object attr = node.getAttribute(NAME_ATTR);
-
-      if (atrrExists(attr)) {
-        if (label.length() > 0) {
-          label += ";";
-        }
-
-        label += attr.toString();
-      }
-    }
-
-    return label;
   }
 }
