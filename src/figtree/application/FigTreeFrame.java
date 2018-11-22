@@ -132,7 +132,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         Icon statisticsToolIcon = IconUtils.getIcon(this.getClass(), "images/statisticsTool.png");
         Icon settingsToolIcon = IconUtils.getIcon(this.getClass(), "images/projectTool.png");
         Icon colourToolIcon = IconUtils.getIcon(this.getClass(), "images/coloursTool.png");
-
+        Icon eukrefIcon = IconUtils.getIcon(this.getClass(), "images/eukref.png");
         Icon nextIcon = IconUtils.getIcon(this.getClass(), "images/next.png");
         Icon prevIcon = IconUtils.getIcon(this.getClass(), "images/prev.png");
 
@@ -212,6 +212,23 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         toolBar.addComponent(findToolButton);
         findToolButton.setEnabled(true);
 
+        toolBar.addSeparator();
+
+        // EUKREF STUFF
+
+
+        final EukrefRemoveTaxaAction eukrefRemoveTaxaAction = new EukrefRemoveTaxaAction("Drop taxa", "Mark taxa for removal...", eukrefIcon);
+        eukrefRemoveTaxaAction.initTreeViewer(treeViewer);
+        JButton eukrefRemoveTaxaButton = new ToolbarButton(eukrefRemoveTaxaAction, true);
+        eukrefRemoveTaxaButton.setFocusable(false);
+        toolBar.add(eukrefRemoveTaxaButton);
+
+        final EukrefCleanFastaAction eukrefCleanFastaAction = new EukrefCleanFastaAction("Clean fasta", "Clean sequences in fasta file...", eukrefIcon);
+        eukrefCleanFastaAction.initEnvironment(this, treeViewer);
+        JButton eukrefCleanFastaButton = new ToolbarButton(eukrefCleanFastaAction, true);
+        eukrefCleanFastaButton.setFocusable(false);
+        toolBar.add(eukrefCleanFastaButton);
+
 //		final ToolbarAction infoToolbarAction = new ToolbarAction("Get Info", "Get Info...", infoToolIcon) {
 //			public void actionPerformed(ActionEvent e){
 //				getInfoAction.actionPerformed(e);
@@ -230,7 +247,7 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
 //        toolBar.addComponent(settingsToolButton);
 //        settingsToolButton.setEnabled(false);
 
-        toolBar.addSeparator();
+        toolBar.addFlexibleSpace();
 
         Box box1 = Box.createHorizontalBox();
         final JToggleButton toggle1 = new JToggleButton("Node");
@@ -458,6 +475,12 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
                 colourToolbarAction.setEnabled(hasSelection);
                 colourAction.setEnabled(hasSelection);
                 clearColouringAction.setEnabled(hasSelection);
+
+                TreePaneSelector.SelectionMode mode = treeViewer.getSelectionMode();
+                boolean isNode = (mode == TreePaneSelector.SelectionMode.NODE);
+                boolean isOnly = (treeViewer.getSelectedNodes().size() == 1);
+                boolean isTaxa = (mode == TreePaneSelector.SelectionMode.TAXA);
+                eukrefRemoveTaxaAction.setEnabled(isTaxa && hasSelection);
             }
         };
         treeViewer.addTreeSelectionListener(l2);
