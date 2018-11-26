@@ -61,12 +61,12 @@ public class EukrefAnnotateTaxaAction extends EukrefBaseAction {
         ArrayList<Node> taxonomy = new ArrayList<Node>();
 
         // Gathering ancestors
-        taxonomy.add(node);
         Node currentNode = node;
         while (!tree.isRoot(currentNode)){
           Node parent = tree.getParent(currentNode);
           currentNode = parent;
-          taxonomy.add(parent);
+          if (!tree.isRoot(currentNode))
+            taxonomy.add(parent);
         }
 
         Collections.reverse(taxonomy);
@@ -91,11 +91,13 @@ public class EukrefAnnotateTaxaAction extends EukrefBaseAction {
       Object attr = node.getAttribute(NAME_ATTR);
 
       if (atrrExists(attr)) {
-        if (label.length() > 0) {
+        if (label.length() > 1) {
           label += ";";
         }
 
         label += attr.toString();
+      } else {
+        label += ";";
       }
     }
 
