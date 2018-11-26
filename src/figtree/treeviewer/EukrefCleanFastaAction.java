@@ -79,8 +79,10 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
       saver.setVisible(true);
       saver.dispose();
 
-      String outPath = saver.getDirectory() + saver.getFile();
-      writeFasta(seqs, outPath);
+      if (saver.getFile() != null){
+        String outPath = saver.getDirectory() + saver.getFile();
+        writeFasta(seqs, outPath);
+      }
     }
   }
 
@@ -124,27 +126,33 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
 
   private HashMap<String, ArrayList<String>> filterSeqs(HashMap<String, ArrayList<String>> src_seqs){
     HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
-    ArrayList<String> toRemove = getSeqsForRemoval();
+    HashMap<String, String> toKeep = getSeqsToKeep();
 
 
     for (Map.Entry<String, ArrayList<String>> entry : src_seqs.entrySet()) {
-      if (!toRemove.contains(entry.getKey())){
-        result.put(entry.getKey(), entry.getValue());
+      if (toKeep.containsKey(entry.getKey())){
+        result.put(entry.getKey() + " " + toKeep.get(entry.getKey()), entry.getValue());
       }
     }
 
     return result;
   }
 
-  private ArrayList<String> getSeqsForRemoval(){
+  private HashMap<String, String> getSeqsToKeep(){
     Tree tree = treeViewer.getCurrentTree();
-    ArrayList<String> result = new ArrayList<String>();
+    HashMap<String, String> result = new HashMap<String, String>();
     Set<Node> nodes = tree.getExternalNodes();
 
     for (Node node : nodes) {
       Object toRemoveAttr = node.getAttribute(EukrefRemoveTaxaAction.ATTR);
-      if (toRemoveAttr != null && (toRemoveAttr.toString() == "true")) {
-        result.add(tree.getTaxon(node).getName());
+      if (!(toRemoveAttr != null && (toRemoveAttr.toString() == "true"))) {
+        Object taxAttr = node.getAttribute(EukrefAnnotateTaxaAction.TAXONOMY_ATTR);
+        String taxStr = "";
+
+        if (taxAttr != null && taxAttr != "")
+          taxStr = taxAttr.toString();
+
+        result.put(tree.getTaxon(node).getName(), taxStr);
       }
     }
 
