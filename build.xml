@@ -36,7 +36,7 @@
     <target name="compile" depends="init">
         <!-- Compile the java code from ${src} into ${build} -->
         <javac source="1.6" target="1.6" srcdir="${src}" destdir="${build}"
-               classpath="${lib}/jebl.jar:${lib}/jam.jar:${lib}/batik-awt-util.jar:${lib}/batik-dom.jar:${lib}/batik-ext.jar:${lib}/batik-svggen.jar:${lib}/batik-util.jar:${lib}/batik-xml.jar:${lib}/xml-apis.jar:${lib}/iText.jar:${lib}/quaqua.jar:${lib}/jwt/servlet-api-2.5-6.0.2.jar:${lib}/jwt/jwt-3.1.7pre1.jar">
+               classpath="${lib}/autocomplete.jar:${lib}/jebl.jar:${lib}/jam.jar:${lib}/batik-awt-util.jar:${lib}/batik-dom.jar:${lib}/batik-ext.jar:${lib}/batik-svggen.jar:${lib}/batik-util.jar:${lib}/batik-xml.jar:${lib}/xml-apis.jar:${lib}/iText.jar:${lib}/quaqua.jar:${lib}/jwt/servlet-api-2.5-6.0.2.jar:${lib}/jwt/jwt-3.1.7pre1.jar">
             <include name="figtree/**"/>
         </javac>
         <copy todir="${build}" verbose="true">
@@ -54,7 +54,9 @@
             <zipgroupfileset dir="${lib}" includes="batik*.jar"/>
             <zipgroupfileset dir="${lib}" includes="xml-apis.jar"/>
             <zipgroupfileset dir="${lib}" includes="iText.jar"/>
+            <zipgroupfileset dir="${lib}" includes="autocomplete.jar" />
             <fileset dir="${build}" includes="**/*.class,**/*.properties,**/*.png,**/*.gif"/>
+            <fileset dir="${src}" includes="figtree/resources/taxa_names.txt"/>
             <manifest>
                 <attribute name="Built-By" value="${user.name}"/>
                 <attribute name="Main-Class" value="figtree.application.FigTreeApplication"/>
@@ -95,6 +97,7 @@
                 <include name="jam.jar" />
                 <include name="jdom.jar" />
                 <include name="jebl.jar" />
+                <include name="autocomplete.jar" />
             </lib>
             <classes dir="${build}"/>
         </war>
