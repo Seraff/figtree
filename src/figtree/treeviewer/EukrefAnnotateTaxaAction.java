@@ -76,7 +76,8 @@ public class EukrefAnnotateTaxaAction extends EukrefBaseAction {
         if (!taxon.getName().isEmpty() && !label.isEmpty()) {
           label += ";";
           label += taxon.getName();
-          node.setAttribute(TAXONOMY_ATTR, label);
+
+          taxon.setAttribute(TAXONOMY_ATTR, label);
         }
       }
 
