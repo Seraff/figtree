@@ -1,11 +1,4 @@
-# FigTree for EukRef
+_FigTree_
 
-Main features in this edition:
+FigTree is designed as a graphical viewer of phylogenetic trees and as a program for producing publication-ready figures. As with most of my programs, it was written for my own needs so may not be as polished and feature-complete as a commercial program. In particular it is designed to display summarized and annotated trees produced by BEAST.
 
-- Convenient branch naming with autocomplete (the name of branch is initialized as a `taxonomy` attribute)
-
-- Automatical taxa annotation; For each taxa the `taxonomy` attribute can be build as a sequence of branch names delimited by `;`
-
-- Marking taxa with "to remove" label; this will assign `eukref_remove` attribute to selected taxa, they will be shown with a red outline
-
-- Cleaning fasta file from the taxa, marked with "to remove" attribute in the tree; this will also append taxonomy to each fasta header after the accession number
