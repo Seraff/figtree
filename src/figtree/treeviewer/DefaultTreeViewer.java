@@ -617,6 +617,8 @@ public class DefaultTreeViewer extends TreeViewer {
             return;
         }
 
+        treePaneSelector.setSelectionMode(selectionMode);
+
         if (oldSelectionMode == TreePaneSelector.SelectionMode.TAXA) {
             treePane.selectNodesFromSelectedTips();
         } else if (selectionMode == TreePaneSelector.SelectionMode.TAXA) {
@@ -624,7 +626,6 @@ public class DefaultTreeViewer extends TreeViewer {
         } else if (selectionMode == TreePaneSelector.SelectionMode.CLADE) {
             treePane.selectCladesFromSelectedNodes();
         }
-        treePaneSelector.setSelectionMode(selectionMode);
     }
 
     public void setDragMode(TreePaneSelector.DragMode dragMode) {
