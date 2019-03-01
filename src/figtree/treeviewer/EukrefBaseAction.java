@@ -45,11 +45,11 @@ import jebl.evolution.trees.*;
  * $LastChangedDate$
  * $LastChangedRevision$
  */
-public abstract class EukrefBaseAction extends ToolbarAction {
+public abstract class EukrefBaseAction extends AbstractAction {
   protected ExtendedTreeViewer treeViewer;
 
-  public EukrefBaseAction(String label, String toolTipText, Icon icon){
-    super(label, toolTipText, icon);
+  public EukrefBaseAction(String label){
+    super(label);
   }
 
   public void initTreeViewer(ExtendedTreeViewer treeViewer){

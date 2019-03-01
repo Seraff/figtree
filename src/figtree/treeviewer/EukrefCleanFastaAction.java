@@ -53,15 +53,25 @@ import jebl.evolution.trees.*;
 public class EukrefCleanFastaAction extends EukrefBaseAction {
   protected FigTreeFrame frame;
   protected ExtendedTreeViewer treeViewer;
+  protected Integer mode;
   public final static String ATTR = "eukref_remove";
+  public final static Integer TO_DROP = 1;
+  public final static Integer TO_KEEP = 2;
 
-  public EukrefCleanFastaAction(String label, String toolTipText, Icon icon){
-    super(label, toolTipText, icon);
+
+  public EukrefCleanFastaAction(String label){
+    super(label);
   }
 
-  public void initEnvironment(FigTreeFrame frame, ExtendedTreeViewer treeViewer){
+  public void initEnvironment(FigTreeFrame frame, ExtendedTreeViewer treeViewer, Integer toDrop){
     this.frame = frame;
     this.treeViewer = treeViewer;
+
+    if (toDrop == EukrefCleanFastaAction.TO_DROP) {
+      this.mode = EukrefCleanFastaAction.TO_DROP;
+    } else {
+      this.mode = EukrefCleanFastaAction.TO_KEEP;
+    }
   }
 
 	public void actionPerformed(ActionEvent e){
@@ -73,6 +83,13 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
     if (chooser.getFile() != null){
       String path = chooser.getDirectory() + chooser.getFile();
       HashMap<String, ArrayList<String>> seqs = readFasta(path);
+
+      String error = getTreeErrorMessage(seqs);
+      if (error.length() > 0){
+        JOptionPane.showMessageDialog(null, error, "Inconsistency found!", JOptionPane.ERROR_MESSAGE);
+        return;
+      }
+
       seqs = filterSeqs(seqs);
 
       FileDialog saver = new FileDialog(frame, "Save new fasta as...", FileDialog.SAVE);
@@ -124,11 +141,11 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
 
   private HashMap<String, ArrayList<String>> filterSeqs(HashMap<String, ArrayList<String>> src_seqs){
     HashMap<String, ArrayList<String>> result = new HashMap<String, ArrayList<String>>();
-    ArrayList<String> toRemove = getSeqsForRemoval();
+    ArrayList<String> toDrop = getSeqsForDropping();
 
 
     for (Map.Entry<String, ArrayList<String>> entry : src_seqs.entrySet()) {
-      if (!toRemove.contains(entry.getKey())){
+      if (!toDrop.contains(entry.getKey())){
         result.put(entry.getKey(), entry.getValue());
       }
     }
@@ -136,19 +153,23 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
     return result;
   }
 
-  private ArrayList<String> getSeqsForRemoval(){
+  private ArrayList<String> getSeqsForDropping(){
     Tree tree = treeViewer.getCurrentTree();
     ArrayList<String> result = new ArrayList<String>();
     Set<Node> nodes = tree.getExternalNodes();
 
     for (Node node : nodes) {
-      Object toRemoveAttr = node.getAttribute(EukrefRemoveTaxaAction.ATTR);
-      if (toRemoveAttr != null && (toRemoveAttr.toString() == "true")) {
+      if ((isDropping() && attributeIsSet(node)) || (isKeeping() && !attributeIsSet(node))) {
         result.add(tree.getTaxon(node).getName());
       }
     }
 
     return result;
+  }
+
+  private boolean attributeIsSet(Node node) {
+    Object toRemoveAttr = node.getAttribute(EukrefMarkTaxaAction.ATTR);
+    return toRemoveAttr != null && (toRemoveAttr.toString() == "true");
   }
 
   private void writeFasta(HashMap<String, ArrayList<String>> seqs, String path) {
@@ -166,5 +187,88 @@ public class EukrefCleanFastaAction extends EukrefBaseAction {
     } catch (IOException fnfe) {
       System.out.println(fnfe.getMessage());
     }
+  }
+
+  private boolean isKeeping() {
+    return this.mode == EukrefCleanFastaAction.TO_KEEP;
+  }
+
+  private boolean isDropping() {
+    return this.mode == EukrefCleanFastaAction.TO_DROP;
+  }
+
+  private String getTreeErrorMessage(HashMap<String, ArrayList<String>> file_seqs) {
+    String missingInTreeMsg = "";
+    String missingInFileMsg = "";
+
+    ArrayList<String> missingInTree = getMissingInTreeSeqs(file_seqs);
+    if (missingInTree.size() > 0) {
+      missingInTreeMsg = "Sequences found in fasta file, but not found in the tree:\n";
+      for (String name : missingInTree) {
+        missingInTreeMsg += ">" + name + "\n";
+      }
+    }
+
+    ArrayList<String> missingInFile = getMissingInFileSeqs(file_seqs);
+    if (missingInFile.size() > 0) {
+      missingInFileMsg = "Sequences found in the tree, but not found in fasta:\n";
+      for (String name : missingInFile) {
+        missingInFileMsg += ">" + name + "\n";
+      }
+    }
+
+    String result = "";
+
+    if (missingInTreeMsg.length() > 0 || missingInFileMsg.length() > 0) {
+      result += missingInTreeMsg;
+      if (missingInTreeMsg.length() > 0 && missingInFileMsg.length() > 0) {
+        result += "\n\n";
+      }
+      result += missingInFileMsg;
+    }
+
+    return result;
+  }
+
+  private ArrayList<String> getMissingInTreeSeqs(HashMap<String, ArrayList<String>> file_seqs) {
+    ArrayList<String> missing = new ArrayList<String>();
+    ArrayList<String> treeSeqs = getTreeNodeNames();
+
+    for (Map.Entry<String, ArrayList<String>> entry : file_seqs.entrySet()) {
+      if (!treeSeqs.contains(entry.getKey())) {
+        missing.add(entry.getKey());
+      }
+    }
+
+    return missing;
+  }
+
+  private ArrayList<String> getMissingInFileSeqs(HashMap<String, ArrayList<String>> file_seqs) {
+    ArrayList<String> missing = new ArrayList<String>();
+    ArrayList<String> treeSeqs = getTreeNodeNames();
+    ArrayList<String> fileSeqs = new ArrayList<String>();
+
+    for (Map.Entry<String, ArrayList<String>> entry : file_seqs.entrySet()) {
+      fileSeqs.add(entry.getKey());
+    }
+
+    for (String treeSeq : treeSeqs){
+      if (!fileSeqs.contains(treeSeq)) {
+        missing.add(treeSeq);
+      }
+    }
+
+    return missing;
+  }
+
+  private ArrayList<String> getTreeNodeNames() {
+    ArrayList<String> result = new ArrayList<String>();
+    Tree tree = treeViewer.getCurrentTree();
+
+    for (Node node : tree.getExternalNodes()) {
+      result.add(tree.getTaxon(node).getName());
+    }
+
+    return result;
   }
 }

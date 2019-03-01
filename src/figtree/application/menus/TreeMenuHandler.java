@@ -61,6 +61,8 @@ public interface TreeMenuHandler {
 	public static final String ANNOTATE_NODES_FROM_TIPS = "Annotate Nodes from Tips...";
 	public static final String ANNOTATE_TIPS_FROM_NODES = "Annotate Tips from Nodes...";
 	public static final String CLEAR_ANNOTATIONS = "Clear Annotations";
+	public static final String EUKREF_MARK_TAXA = "Mark taxa";
+	public static final String EUKREF_UNMARK_ALL = "Unmark all";
 
 	Action getNextTreeAction();
 	Action getPreviousTreeAction();
@@ -89,5 +91,7 @@ public interface TreeMenuHandler {
 	Action getAnnotateNodesFromTipsAction();
 	Action getAnnotateTipsFromNodesAction();
 	Action getClearAnnotationsAction();
+	Action getEukrefMarkTaxaAction();
+	Action getEukrefUnmarkAllAction();
 
 }

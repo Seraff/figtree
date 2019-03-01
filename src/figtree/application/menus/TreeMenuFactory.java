@@ -133,6 +133,15 @@ public class TreeMenuFactory implements MenuFactory {
 		    item = new JMenuItem(((TreeMenuHandler)frame).getClearHilightingAction());
 		    menu.add(item);
 
+          menu.addSeparator();
+
+          item = new JMenuItem(((TreeMenuHandler)frame).getEukrefMarkTaxaAction());
+          item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, MenuBarFactory.MENU_MASK));
+          menu.add(item);
+
+          item = new JMenuItem(((TreeMenuHandler)frame).getEukrefUnmarkAllAction());
+          menu.add(item);
+
         } else if (Utils.isMacOSX()) {
 	        // make a false menu (only required for Mac OS X)
 	        item = new JMenuItem(TreeMenuHandler.NEXT_TREE);
@@ -245,8 +254,17 @@ public class TreeMenuFactory implements MenuFactory {
 	        item.setEnabled(false);
 		    menu.add(item);
 
-        }
+          menu.addSeparator();
 
+          item = new JMenuItem(TreeMenuHandler.EUKREF_MARK_TAXA);
+          item.setEnabled(false);
+          item.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, MenuBarFactory.MENU_MASK));
+          menu.add(item);
+
+          item = new JMenuItem(TreeMenuHandler.EUKREF_UNMARK_ALL);
+          item.setEnabled(false);
+          menu.add(item);
+        }
     }
 
     public int getPreferredAlignment() {

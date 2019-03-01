@@ -132,9 +132,12 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         Icon statisticsToolIcon = IconUtils.getIcon(this.getClass(), "images/statisticsTool.png");
         Icon settingsToolIcon = IconUtils.getIcon(this.getClass(), "images/projectTool.png");
         Icon colourToolIcon = IconUtils.getIcon(this.getClass(), "images/coloursTool.png");
-        Icon eukrefIcon = IconUtils.getIcon(this.getClass(), "images/eukref.png");
         Icon nextIcon = IconUtils.getIcon(this.getClass(), "images/next.png");
         Icon prevIcon = IconUtils.getIcon(this.getClass(), "images/prev.png");
+
+        Icon eukrefIcon = IconUtils.getIcon(this.getClass(), "images/eukrefMark.png");
+        Icon eukrefKeepIcon = IconUtils.getIcon(this.getClass(), "images/eukrefKeepMarked.png");
+        Icon eukrefDropIcon = IconUtils.getIcon(this.getClass(), "images/eukrefDropMarked.png");
 
         final ToolbarAction cartoonToolbarAction = new ToolbarAction("Cartoon", CARTOON_NODE, cartoonNodeToolIcon) {
             public void actionPerformed(ActionEvent e){
@@ -215,19 +218,37 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         toolBar.addSeparator();
 
         // EUKREF STUFF
-
-
-        final EukrefRemoveTaxaAction eukrefRemoveTaxaAction = new EukrefRemoveTaxaAction("Drop taxa", "Mark taxa for removal...", eukrefIcon);
-        eukrefRemoveTaxaAction.initTreeViewer(treeViewer);
-        JButton eukrefRemoveTaxaButton = new ToolbarButton(eukrefRemoveTaxaAction, true);
+        eukrefMarkTaxaAction.initTreeViewer(treeViewer);
+        final ToolbarAction eukrefMarkTaxaToolbarAction = new ToolbarAction("Mark taxa", "Mark taxa for removal/keeping...", eukrefIcon) {
+            public void actionPerformed(ActionEvent e){
+                eukrefMarkTaxaAction.actionPerformed(e);
+            }
+        };
+        JButton eukrefRemoveTaxaButton = new ToolbarButton(eukrefMarkTaxaToolbarAction, true);
         eukrefRemoveTaxaButton.setFocusable(false);
         toolBar.add(eukrefRemoveTaxaButton);
 
-        final EukrefCleanFastaAction eukrefCleanFastaAction = new EukrefCleanFastaAction("Clean fasta", "Clean sequences in fasta file...", eukrefIcon);
-        eukrefCleanFastaAction.initEnvironment(this, treeViewer);
-        JButton eukrefCleanFastaButton = new ToolbarButton(eukrefCleanFastaAction, true);
-        eukrefCleanFastaButton.setFocusable(false);
-        toolBar.add(eukrefCleanFastaButton);
+        // drop from fasta button
+        eukrefDropFromFastaAction.initEnvironment(this, treeViewer, EukrefCleanFastaAction.TO_DROP);
+        final ToolbarAction eukrefDropFromFastaToolbarAction = new ToolbarAction("Drop selected", "Drop selected sequences from fasta file...", eukrefDropIcon) {
+            public void actionPerformed(ActionEvent e){
+                eukrefDropFromFastaAction.actionPerformed(e);
+            }
+        };
+        JButton eukrefDropFromFastaButton = new ToolbarButton(eukrefDropFromFastaToolbarAction, true);
+        eukrefDropFromFastaButton.setFocusable(false);
+        toolBar.add(eukrefDropFromFastaButton);
+
+        // keep in fasta button
+        eukrefKeepInFastaAction.initEnvironment(this, treeViewer, EukrefCleanFastaAction.TO_KEEP);
+        final ToolbarAction eukrefKeepInFastaToolbarAction = new ToolbarAction("Keep selected", "Keep only selected sequences in fasta file...", eukrefKeepIcon) {
+            public void actionPerformed(ActionEvent e){
+                eukrefKeepInFastaAction.actionPerformed(e);
+            }
+        };
+        JButton eukrefKeepInFastaButton = new ToolbarButton(eukrefKeepInFastaToolbarAction, true);
+        eukrefKeepInFastaButton.setFocusable(false);
+        toolBar.add(eukrefKeepInFastaButton);
 
 //		final ToolbarAction infoToolbarAction = new ToolbarAction("Get Info", "Get Info...", infoToolIcon) {
 //			public void actionPerformed(ActionEvent e){
@@ -480,7 +501,8 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
                 boolean isNode = (mode == TreePaneSelector.SelectionMode.NODE);
                 boolean isOnly = (treeViewer.getSelectedNodes().size() == 1);
                 boolean isTaxa = (mode == TreePaneSelector.SelectionMode.TAXA);
-                eukrefRemoveTaxaAction.setEnabled(isTaxa && hasSelection);
+                eukrefMarkTaxaToolbarAction.setEnabled(isTaxa && hasSelection);
+                eukrefMarkTaxaAction.setEnabled(isTaxa && hasSelection);
             }
         };
         treeViewer.addTreeSelectionListener(l2);
@@ -1675,6 +1697,14 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         return findAction;
     }
 
+    public Action getEukrefMarkTaxaAction() {
+        return eukrefMarkTaxaAction;
+    }
+
+    public Action getEukrefUnmarkAllAction() {
+        return eukrefUnmarkAllAction;
+    }
+
     private AbstractAction importAction = new AbstractAction("Import Annotations...") {
         public void actionPerformed(ActionEvent ae) {
             doImport();
@@ -1886,6 +1916,15 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
             doGetInfo();
         }
     };
+
+    private EukrefMarkTaxaAction eukrefMarkTaxaAction = new EukrefMarkTaxaAction("Mark taxa");
+    private AbstractAction eukrefUnmarkAllAction = new AbstractAction("Unmark all") {
+        public void actionPerformed(ActionEvent ae) {
+            eukrefMarkTaxaAction.unmarkAll();
+        }
+    };
+    private EukrefCleanFastaAction eukrefDropFromFastaAction = new EukrefCleanFastaAction("Drop selected from fasta");
+    private EukrefCleanFastaAction eukrefKeepInFastaAction = new EukrefCleanFastaAction("Keep in fasta only selected");
 
     private ExportTreeDialog exportTreeDialog = null;
     private FindPanel findPanel = null;

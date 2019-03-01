@@ -22,7 +22,7 @@ package figtree.treeviewer.painters;
 
 import figtree.treeviewer.TimeScale;
 import figtree.treeviewer.TreePane;
-import figtree.treeviewer.EukrefRemoveTaxaAction;
+import figtree.treeviewer.EukrefMarkTaxaAction;
 import figtree.treeviewer.decorators.*;
 import jebl.evolution.graphs.Node;
 import jebl.evolution.taxa.Taxon;
@@ -267,10 +267,10 @@ public class BasicLabelPainter extends LabelPainter<Node> {
         }
 
         // EUKREF
-        Object toRemoveAttr = item.getAttribute(EukrefRemoveTaxaAction.ATTR);
-        boolean toRemove = (toRemoveAttr != null && toRemoveAttr.toString() == "true");
-        if (toRemove){
-            g2.setPaint(Color.red);
+        Object toMarkAttr = item.getAttribute(EukrefMarkTaxaAction.ATTR);
+        boolean toMark = (toMarkAttr != null && toMarkAttr.toString() == "true");
+        if (toMark){
+            g2.setPaint(new Color(65, 96, 147));
             g2.draw(bounds);
         }
 
