@@ -4,7 +4,6 @@ build/*
 classes/*
 dist/*
 out/*
-FigTree*
 tests/*
 examples/*
 .DS_Store
