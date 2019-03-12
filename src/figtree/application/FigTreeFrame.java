@@ -29,6 +29,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import figtree.treeviewer.decorators.DiscreteColourDecorator;
 import figtree.treeviewer.decorators.HSBDiscreteColourDecorator;
 import figtree.treeviewer.painters.StatesPainter;
+import figtree.treeviewer.*;
 import jebl.evolution.align.Output;
 import jebl.evolution.alignments.Alignment;
 import jebl.evolution.alignments.BasicAlignment;
@@ -470,6 +471,16 @@ public class FigTreeFrame extends DocumentFrame implements FigTreeFileMenuHandle
         getFindAction().setEnabled(true);
 
         getZoomWindowAction().setEnabled(false);
+
+        // INIT MsPhylo stuff
+        figTreePanel.toggleMidpointRoot();
+        MsPhyloManager msPhylo = new MsPhyloManager(treeViewer);
+
+        Map<String, Object> settings = new HashMap<String, Object>();
+        controlPalette.getSettings(settings);
+        settings.put("nodeLabels.isShown", true);
+        settings.put("nodeLabels.displayAttribute", "label");
+        controlPalette.setSettings(settings);
     }
 
     private void defineAnnotations() {

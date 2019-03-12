@@ -538,6 +538,11 @@ public class DefaultTreeViewer extends TreeViewer {
         fireTreeSettingsChanged();
     }
 
+    public void hilightSpecificNode(Node node, Color color) {
+        treePane.hilightSpecificNode(node, color);
+        fireTreeSettingsChanged();
+    }
+
     public void clearHilighting() {
         treePane.clearHilightedNodes();
         fireTreeSettingsChanged();

@@ -1,0 +1,501 @@
+#NEXUS
+begin taxa;
+	dimensions ntax=399;
+	taxlabels
+	AastGMTD
+	Aca1GMTD
+	Aca2GMTD
+	Aca3GMTD
+	AcanGEN
+	Acancast
+	Achlhypo
+	AcomGMTD
+	Acradend
+	Acrahele
+	Acrakona
+	Acrarose
+	Actinsol
+	AculGMTD
+	AdivGMTD
+	AheaGMTD
+	Albulaib
+	Ale1GMTD
+	Ale2GMTD
+	Ale3GMTD
+	AlexTama
+	Allomacr
+	AllovaBA
+	AlugGMTD
+	AmauGMTD
+	AmoeBI
+	Amoeprot
+	Amphiz10
+	Amphizo2
+	Amphizo7
+	Amphizo8
+	Amphizo9
+	Ampqueen
+	AncB70
+	Ancytwis
+	Andagodo
+	ApalGMTD
+	ApeaGMTD
+	Apismell
+	Aplakerg
+	AplyCALI
+	Apo1GMTD
+	Apo2GMTD
+	AquiGMTD
+	Arabthal
+	Arcegibb
+	Arcevulg
+	Arcyferr
+	ArhyGMTD
+	AroyGMTD
+	Aspefumi
+	Auralima
+	Aureanop
+	Aurelagu
+	Badhcap2
+	Badhcaps
+	Badhmel2
+	Badhmela
+	Bass1
+	Batrdend
+	Belosp
+	Bigenata
+	Blastocl
+	Bma2GMTD
+	BmanGMTD
+	Boli1657
+	Boli2347
+	Bolipaci
+	Branflor
+	CCARosc
+	Caeneleg
+	CaerLAHR
+	CafeCLAB
+	Caferoe2
+	Caferoen
+	Calltube
+	Cavoapop
+	CerafrKM
+	Cerafrut
+	Ceratahi
+	CercD1
+	Chalrein
+	Chatsubs
+	Chlorept
+	Chryfrag
+	Chrypoly
+	Chryrota
+	Chyr2298
+	Clasrecu
+	ClydYONA
+	CochMINU
+	Coprcine
+	Coprprot
+	Cratleuc
+	CrenE2NB
+	Crencaro
+	Crypoper
+	Cryppara
+	CuneRUFF
+	CyanMero
+	Cyanpara
+	Cyclsp1
+	DMV
+	Dactylsp
+	Debahans
+	Dermalge
+	Deutalgo
+	Deveeleg
+	Diacleuc
+	DictDisc
+	DictPurp
+	Dictfasc
+	Dictspec
+	Dideeffu
+	Didefall
+	Dideglo2
+	Dideglob
+	Didydubi
+	Didynigr
+	Didysqua
+	DiffUSP
+	Diffbry1
+	DiffspD2
+	Dino2267
+	Diph30K
+	DiphSRT
+	Diploch3
+	Drosmela
+	Echibisp
+	Echiexud
+	Echiminu
+	Echiolig
+	Ectosili
+	Elaeceri
+	Emilhuxl
+	EndoLINK
+	Endoame3
+	Endozona
+	EuglGrac
+	Eutrgymn
+	Fibrjapo
+	Filanola
+	Flabcita
+	Flamaegy
+	Flor1587
+	FontBI
+	Fragcyli
+	Fulilevi
+	Gallgall
+	GlauNost
+	Gloewitr
+	GoceYONA
+	Gocefonb
+	Guilthet
+	GuttFOLD
+	GuttMIGQ
+	GuttRUIZ
+	HIHM1TPD
+	HISRT213
+	Haloseos
+	HarpIllu
+	Harpschu
+	HelLAHR
+	Helespha
+	Heteakas
+	Heteclar
+	HeteroBB2
+	HomoSapi
+	HsylLAHR
+	Hyalpapi
+	Hyalpara
+	HyphOLD
+	HyphRAY
+	Hyphcate
+	Isoc1324
+	JakoLibe
+	Karebrev
+	Karenia
+	Kellfim2
+	Kellfimi
+	L3ADawso
+	Lamparcy
+	Lampsci2
+	Lankabot
+	Lenilimo
+	Leocfrag
+	LesqspL8
+	Lindtubu
+	LingRSL
+	Lothamoe
+	Lothglob
+	Love2098
+	Luaphula
+	Lycoepi2
+	Lycoepid
+	MAST13c
+	MalaCali
+	MalaJako
+	Mall3275
+	MastBala
+	Mastabdu
+	Mastbala
+	Masteilh
+	MayoBSH0
+	Mayocant
+	MicrA134
+	Micrcfsp
+	Micrpusl
+	MiniBI
+	Monobrev
+	MultHAKH
+	Mycagemm
+	MystPP16
+	NYK3C
+	NaegGRUB
+	Naegclar
+	Naegfowl
+	Naegleri
+	Nanngadi
+	Nebela0
+	Nemagrac
+	Nemavect
+	Neopaest
+	Neovdama
+	Netzovif
+	Neurcras
+	NolaAFSM
+	Nutolong
+	Ochr1393
+	OchrBG
+	OryzSati
+	Ostrtaur
+	OvalDESE
+	OxyrMari
+	Oxyrmari
+	PC5
+	PCBtrin
+	Palpbili
+	ParaTETR
+	Paraatla
+	Paraband
+	Paralevi
+	Paratetr
+	Paravest
+	ParvMONO
+	Paulchro
+	Pavl2436
+	PcarLAHR
+	Pela2097
+	Pelacalc
+	Pelasubv
+	PellCATA
+	Pellcat2
+	Penacfsp
+	Perccos8
+	Perccos9
+	Perccosm
+	Periverm
+	PerkMARI
+	Perkmari
+	Pessonel
+	PhaeTRIC
+	Phaeconf
+	Phaesoli
+	Phaetric
+	Phalsoli
+	Pharkirb
+	PhysSRA
+	PhysTSA
+	Physalbo
+	Physalbu
+	Physbite
+	Physcine
+	Physleuc
+	Physoblo
+	Physpate
+	Physpoly
+	Physviri
+	PhytInfe
+	Phytcaps
+	Phytcinn
+	Phytinfe
+	Phytpara
+	Phytramo
+	Phytsoja
+	Picosali
+	Planfung
+	Pleucart
+	Polypall
+	Porpyezo
+	Protarac
+	Protarti
+	Protbohe
+	Protfimi
+	Protnoct
+	Protpyro
+	Prymparv
+	Pseuelas
+	Psuemult
+	Ptolbull
+	Pythapha
+	Pytharrh
+	Pythirre
+	Pythspor
+	Pythulti
+	Pythvexa
+	Pyxioper
+	RHP11
+	Raphambi
+	ReclAmer
+	Rhizdele
+	Rhizelon
+	Rhizlibe
+	Rhizmari
+	Rhizsaxo
+	Rigiramo
+	RipDP13
+	Roomtrun
+	RoscUACE
+	SAWYMARY
+	STACLIPO
+	Sacccere
+	Salprose
+	Sapppeda
+	Saprdecl
+	Saprpara
+	SawyMary
+	Schiaggr
+	Schimans
+	Schipseu
+	Schivulg
+	Schizpom
+	Sexangul
+	Snowball
+	Soganiso
+	SogiREAS
+	Soliirre
+	Sphaarct
+	Spizpunc
+	Spumelon
+	Spumosp
+	Squajapo
+	StacLipo
+	Staclipo
+	Stenlima
+	Stensten
+	Sterramo
+	Sticdoed
+	StygNOMA
+	SymbKB8
+	SymbMF
+	Taensoli
+	Tetraber
+	Tetraspo
+	ThalPseu
+	Thalocea
+	ThecSP
+	Thecquad
+	Thectrah
+	ThraLLF1
+	Thraclav
+	Tri40319
+	TriPCT
+	Tribminu
+	TricAmI7
+	TricYANA
+	Trimpyri
+	Trypbruc
+	Ts42Rosc
+	Tsukglob
+	TurkRosc
+	Tychacut
+	Undascha
+	Union161
+	Unknown
+	Ustimayd
+	Vahlavar
+	VannDIVA
+	Vannrobu
+	Vauc1084
+	Vauclito
+	Vermanta
+	Vermverm
+	VexiDIVA
+	Veximinu
+	Viscpunc
+	Vitrbras
+	Volvcart
+	Welwmira
+	Wobbluna
+	YetiRNA1
+	YetiRNA3
+	test_acrasis
+	test_neo161
+	test_par151
+	test_perk151
+	test_perk161
+	test_rhodotorula
+	test_soganiso
+;
+end;
+
+begin trees;
+	tree tree_1 = [&R] (((ArhyGMTD:1.0E-6,AlugGMTD:1.0E-6)[&label=86]:1.0E-6,(((AheaGMTD:0.019854,((Ale1GMTD:0.003421,(Ale2GMTD:1.0E-6,Ale3GMTD:1.0E-6)[&label=72]:1.0E-6)[&label=97]:0.007622,(Protpyro:0.122934,(((((AastGMTD:1.0E-6,AdivGMTD:1.0E-6)[&label=99]:0.002879,AcomGMTD:0.040284)[&label=99]:0.172314,(((((Sapppeda:0.344594,(ClydYONA:0.518221,RHP11:0.448068)[&label=18]:0.070335)[&label=16]:0.034204,((Thecquad:0.166592,ThecSP:0.147769)[&label=100]:0.26928,StygNOMA:0.480878)[&label=11]:0.053594)[&label=7]:0.036065,(((((L3ADawso:1.0E-6,(CuneRUFF:0.022422,MayoBSH0:1.0E-6)[&label=85]:0.011017)[&label=100]:0.28621,((test_neo161:1.0E-6,Neopaest:1.0E-6)[&label=100]:0.125702,((test_par151:1.0E-6,Paraatla:1.0E-6)[&label=34]:1.0E-6,test_perk151:1.0E-6)[&label=100]:0.157514)[&label=100]:0.227061)[&label=37]:0.083494,(Veximinu:0.220353,VexiDIVA:0.303322)[&label=100]:0.231732)[&label=26]:0.060465,((((Nemagrac:0.004747,Ceratahi:0.104985)[&label=100]:0.309755,(((Filanola:0.197859,((Planfung:0.292988,Protnoct:0.242341)[&label=100]:0.205001,Union161:0.182342)[&label=97]:0.114318)[&label=44]:0.09003,((Acradend:0.133752,(Flamaegy:0.218996,(Schipseu:0.200824,((Schivulg:0.136844,(Tychacut:0.093297,Snowball:0.185906)[&label=90]:0.080663)[&label=73]:0.027921,Cavoapop:0.272645)[&label=47]:0.04433)[&label=80]:0.085309)[&label=6]:0.006005)[&label=16]:0.013891,(Soliirre:0.372377,Phalsoli:0.466712)[&label=30]:0.103164)[&label=18]:0.038404)[&label=17]:0.045059,(OvalDESE:0.416137,(Mayocant:0.388226,(Dermalge:0.212067,Paralevi:0.307521)[&label=99]:0.12284)[&label=49]:0.091441)[&label=11]:0.048859)[&label=1]:0.029362)[&label=14]:0.046963,((LingRSL:0.535996,(Protfimi:0.323676,(Endoame3:0.30936,(Undascha:0.185826,Vannrobu:0.0713)[&label=100]:0.191861)[&label=86]:0.080661)[&label=98]:0.161125)[&label=47]:0.156543,(((((((DictPurp:0.163608,DictDisc:0.17848)[&label=66]:0.030879,(Polypall:0.178663,Dictfasc:0.094383)[&label=76]:0.045535)[&label=100]:0.346266,(((Lycoepid:1.0E-6,Lycoepi2:1.0E-6)[&label=100]:1.0E-6,(Physalbo:1.0E-6,((Kellfimi:1.0E-6,(Cratleuc:1.0E-6,Diacleuc:0.004904)[&label=56]:1.0E-6)[&label=49]:1.0E-6,Elaeceri:1.0E-6)[&label=49]:1.0E-6)[&label=60]:1.0E-6)[&label=100]:0.261897,(Arcyferr:0.073412,Periverm:0.094119)[&label=66]:0.068848)[&label=78]:0.09234)[&label=9]:0.032524,((Lampsci2:0.172915,((((Didydubi:0.076981,(Didynigr:0.040296,Didysqua:0.094355)[&label=86]:0.047552)[&label=69]:0.036849,(((Dideeffu:0.066815,(Dideglob:1.0E-6,Dideglo2:1.0E-6)[&label=100]:0.030528)[&label=79]:0.025702,(Kellfim2:0.207673,(((((Badhmel2:1.0E-6,Badhmela:1.0E-6)[&label=100]:0.014339,(Badhcaps:1.0E-6,Badhcap2:1.0E-6)[&label=94]:0.010313)[&label=92]:0.040893,Physcine:0.019023)[&label=56]:0.037573,(Physviri:0.069707,(Physalbu:0.092042,Physleuc:0.019881)[&label=22]:0.021374)[&label=34]:0.040855)[&label=15]:0.023706,((Physoblo:0.012146,Fulilevi:0.076865)[&label=88]:0.046856,(Leocfrag:0.101154,(((PhysTSA:1.0E-6,PhysSRA:1.0E-6)[&label=70]:1.0E-6,Physpoly:0.00457)[&label=87]:1.0E-6,Physbite:0.126115)[&label=53]:0.026392)[&label=22]:0.010797)[&label=3]:0.017525)[&label=24]:0.015318)[&label=35]:0.007275)[&label=44]:0.021993,Unknown:0.097954)[&label=25]:0.022339)[&label=31]:0.022866,Didefall:0.112451)[&label=86]:0.067685,Lamparcy:0.158773)[&label=42]:0.03904)[&label=95]:0.137459,(Lindtubu:0.266611,(Echiolig:0.263681,(Echibisp:0.223385,Echiminu:0.122532)[&label=78]:0.067893)[&label=85]:0.042736)[&label=71]:0.041626)[&label=59]:0.050059)[&label=48]:0.077868,((YetiRNA3:1.0E-6,YetiRNA1:1.0E-6)[&label=100]:0.357617,((CerafrKM:0.086254,Cerafrut:0.01739)[&label=100]:0.263543,(Protarti:0.338105,Clasrecu:0.106029)[&label=89]:0.089025)[&label=80]:0.086577)[&label=66]:0.072425)[&label=85]:0.132964,((((Sexangul:0.587565,(Squajapo:0.163748,Pessonel:0.386472)[&label=90]:0.178081)[&label=98]:0.240904,Belosp:0.480387)[&label=32]:0.114721,(Rigiramo:0.459654,Vermanta:0.474543)[&label=40]:0.086205)[&label=7]:0.065639,((((((Ampqueen:0.34837,Paulchro:0.405548)[&label=4]:0.024095,(((HeteroBB2:1.0E-6,((Soganiso:1.0E-6,SogiREAS:1.0E-6)[&label=21]:1.0E-6,test_soganiso:1.0E-6)[&label=21]:1.0E-6)[&label=100]:0.355909,Pharkirb:0.364126)[&label=19]:0.049158,(MultHAKH:0.539357,(((((((Naegclar:0.033926,((NaegGRUB:1.0E-6,Naegleri:1.0E-6)[&label=100]:0.133811,Naegfowl:0.112643)[&label=49]:0.022074)[&label=100]:0.252875,(AllovaBA:0.193069,(Acrarose:1.0E-6,(Acrahele:0.079908,((Acrakona:1.0E-6,test_acrasis:1.0E-6)[&label=32]:1.0E-6,test_rhodotorula:1.0E-6)[&label=100]:0.065322)[&label=45]:0.006399)[&label=78]:0.045979)[&label=98]:0.157518)[&label=65]:0.063896,(Tetraber:0.145664,Vahlavar:0.094658)[&label=100]:0.215825)[&label=42]:0.064149,Heteclar:0.276715)[&label=23]:0.044389,((CrenE2NB:0.348072,(Crencaro:0.221637,HISRT213:0.446915)[&label=61]:0.085176)[&label=100]:0.369213,((Perccos8:0.490723,(Perccosm:1.0E-6,Perccos9:1.0E-6)[&label=100]:0.254584)[&label=94]:0.149759,((StacLipo:1.0E-6,Staclipo:1.0E-6)[&label=100]:1.0E-6,STACLIPO:1.0E-6)[&label=100]:0.354299)[&label=24]:0.022391)[&label=16]:0.041683)[&label=37]:0.041211,Neovdama:0.3814)[&label=29]:0.06545,(Dactylsp:0.444203,((SAWYMARY:1.0E-6,SawyMary:1.0E-6)[&label=100]:0.306904,(HIHM1TPD:0.398027,(Harpschu:0.007941,HarpIllu:1.0E-6)[&label=100]:0.46614)[&label=97]:0.194828)[&label=49]:0.073464)[&label=20]:0.06722)[&label=26]:1.0E-6)[&label=7]:0.054359)[&label=12]:0.102578)[&label=1]:0.040607,(((((((((OxyrMari:1.0E-6,Oxyrmari:1.0E-6)[&label=100]:0.288655,(((Perkmari:1.0E-6,PerkMARI:1.0E-6)[&label=100]:0.802879,(Karenia:0.284469,(AlexTama:0.077168,(SymbKB8:0.036829,SymbMF:0.277753)[&label=89]:0.047527)[&label=100]:0.198339)[&label=83]:0.061832)[&label=33]:0.063302,Karebrev:0.211907)[&label=16]:0.050139)[&label=43]:0.121323,(Volvcart:0.098527,Chalrein:0.034233)[&label=100]:0.298655)[&label=14]:0.038182,Picosali:0.217081)[&label=10]:0.01846,(Micrpusl:0.215112,Ostrtaur:0.265874)[&label=77]:0.095195)[&label=25]:0.049712,(Physpate:0.237976,(Welwmira:0.136954,(Arabthal:0.105337,OryzSati:0.092826)[&label=99]:0.088095)[&label=88]:0.069112)[&label=60]:0.082229)[&label=14]:0.051583,(((AplyCALI:0.401618,Nemavect:0.274166)[&label=62]:0.091657,((Caeneleg:0.410584,(Apismell:0.323528,Drosmela:0.361411)[&label=90]:0.144723)[&label=42]:0.106042,((HomoSapi:0.08294,Gallgall:0.075994)[&label=100]:0.21676,Branflor:0.284213)[&label=46]:0.107366)[&label=1]:0.031283)[&label=12]:0.05743,(((Thraclav:0.04795,((Saprdecl:0.014259,Saprpara:0.016236)[&label=86]:0.05406,Achlhypo:0.063607)[&label=65]:0.048152)[&label=100]:0.16032,(Albulaib:0.358348,((Pytharrh:0.125076,Pythapha:0.062498)[&label=87]:0.064317,(((Phytramo:0.044568,((Phytsoja:0.020931,Phytcinn:0.027855)[&label=96]:0.046021,(Phytcaps:0.081287,(Hyalpara:0.160428,(Phytpara:0.025204,(PhytInfe:1.0E-6,Phytinfe:1.0E-6)[&label=99]:0.019602)[&label=83]:0.01017)[&label=55]:0.022628)[&label=30]:0.022179)[&label=30]:0.019124)[&label=99]:0.140719,Pythvexa:0.120409)[&label=75]:0.042881,(Pythirre:0.054951,(Pythspor:0.099415,Pythulti:0.008914)[&label=100]:0.069663)[&label=99]:0.051968)[&label=58]:0.03999)[&label=67]:0.040128)[&label=64]:0.076711)[&label=100]:0.268271,((Trimpyri:0.519929,TriPCT:0.471105)[&label=99]:0.317982,(AncB70:0.328336,Nutolong:0.372052)[&label=95]:0.121221)[&label=12]:0.071207)[&label=4]:0.08558)[&label=1]:0.026789)[&label=0]:0.030265,((((Spizpunc:0.101666,Batrdend:0.322501)[&label=89]:0.123973,(Rhizdele:0.635309,((Ustimayd:0.39166,Coprcine:0.381688)[&label=97]:0.266541,(((Neurcras:0.15346,Aspefumi:0.220764)[&label=100]:0.169386,(Sacccere:0.459745,Debahans:0.18213)[&label=99]:0.182669)[&label=77]:0.123524,Schizpom:0.544323)[&label=45]:0.050047)[&label=59]:0.124512)[&label=79]:0.100211)[&label=88]:0.116029,(Allomacr:0.063866,Blastocl:0.094538)[&label=100]:0.217104)[&label=70]:0.063847,((Monobrev:0.1732,Salprose:0.218445)[&label=91]:0.085642,(Sphaarct:0.434978,MiniBI:0.329775)[&label=8]:0.077506)[&label=7]:0.042271)[&label=8]:0.07362)[&label=0]:0.023151,(((((((Lankabot:0.791375,Vitrbras:0.294236)[&label=77]:0.173119,((((ParaTETR:1.0E-6,Paratetr:1.0E-6)[&label=100]:1.118363,(Eutrgymn:0.148544,EuglGrac:0.077432)[&label=100]:0.280959)[&label=14]:0.094056,(ReclAmer:0.413295,JakoLibe:0.31476)[&label=46]:0.114284)[&label=3]:0.106344,(Ancytwis:0.302744,((Caferoen:1.0E-6,Caferoe2:1.0E-6)[&label=100]:0.452951,Haloseos:0.203377)[&label=56]:0.134138)[&label=15]:0.040077)[&label=0]:0.021454)[&label=2]:0.053424,(Wobbluna:0.198255,CafeCLAB:0.157472)[&label=99]:0.160492)[&label=0]:0.033534,((DMV:0.592705,Thectrah:0.407087)[&label=6]:0.024918,AmoeBI:0.350749)[&label=0]:0.044841)[&label=0]:0.020702,((Auralima:0.246309,(ThraLLF1:0.21756,Schiaggr:0.116447)[&label=70]:0.044263)[&label=99]:0.163166,Aplakerg:0.397037)[&label=79]:0.108931)[&label=0]:0.028413,(((Aca1GMTD:1.0E-6,AcanGEN:1.0E-6)[&label=100]:1.359615,(Calltube:0.489628,RipDP13:0.513023)[&label=9]:0.027688)[&label=0]:0.14551,(((CercD1:0.372266,(Chlorept:0.056958,((Lothglob:0.070284,Lothamoe:0.192777)[&label=63]:0.056775,Bigenata:0.129237)[&label=58]:0.037661)[&label=97]:0.331093)[&label=35]:0.1178,((Pleucart:0.258049,Pavl2436:0.259701)[&label=99]:0.308233,((Isoc1324:0.036669,Emilhuxl:0.064398)[&label=100]:0.139654,(Prymparv:0.164871,(Chrypoly:0.206052,Chryrota:0.114063)[&label=87]:0.079486)[&label=47]:0.047528)[&label=82]:0.110471)[&label=77]:0.120724)[&label=4]:0.015527,(VannDIVA:0.492466,(((HyphOLD:1.0E-6,Hyphcate:1.0E-6)[&label=36]:1.0E-6,HyphRAY:1.0E-6)[&label=100]:0.336497,(((Fibrjapo:0.182053,(Heteakas:0.14838,Chatsubs:0.163391)[&label=69]:0.040668)[&label=88]:0.084329,((((Nanngadi:0.187684,Viscpunc:0.138965)[&label=93]:0.13089,((Dino2267:0.168654,((Ochr1393:0.107525,(Chyr2298:0.115415,Spumelon:0.119909)[&label=49]:0.008991)[&label=99]:0.094345,OchrBG:0.16)[&label=53]:0.031068)[&label=68]:0.041607,((Paravest:0.206922,Paraband:0.064771)[&label=95]:0.075648,Mall3275:0.336426)[&label=46]:0.021523)[&label=71]:0.062205)[&label=25]:0.031658,(Rhizmari:0.778098,((Flor1587:0.335698,Deveeleg:0.416173)[&label=20]:0.049165,((Phaesoli:0.150956,(Tribminu:0.135564,(Vauclito:0.337519,Vauc1084:0.152593)[&label=96]:0.11703)[&label=94]:0.085453)[&label=45]:0.062185,(((Boli1657:0.062658,(Bolipaci:1.0E-6,Boli2347:1.0E-6)[&label=100]:0.075033)[&label=100]:0.130688,(((Fragcyli:0.098085,Psuemult:0.055485)[&label=100]:0.110751,(Phaetric:1.0E-6,PhaeTRIC:1.0E-6)[&label=100]:0.155657)[&label=81]:0.087112,(Thalocea:0.14628,ThalPseu:0.069872)[&label=99]:0.093176)[&label=56]:0.075171)[&label=76]:0.082834,((Sticdoed:0.129823,Phaeconf:0.138967)[&label=100]:0.085411,Tetraspo:0.256872)[&label=16]:0.046683)[&label=4]:0.02584)[&label=5]:0.033631)[&label=0]:0.01197)[&label=1]:0.003586)[&label=1]:0.024205,(Ectosili:0.167866,Actinsol:0.39776)[&label=27]:0.058381)[&label=2]:0.017465)[&label=14]:0.076563,((((Pela2097:0.179649,(Pelasubv:0.092499,Pelacalc:0.117789)[&label=97]:0.092129)[&label=54]:0.032843,(Aurelagu:0.221209,Chryfrag:0.184569)[&label=99]:0.097357)[&label=99]:0.13513,Aureanop:0.337476)[&label=100]:0.16961,(((Pseuelas:0.050209,Love2098:0.099278)[&label=100]:0.153601,Dictspec:0.271041)[&label=97]:0.144272,MAST13c:0.69041)[&label=6]:0.004261)[&label=8]:0.0692)[&label=7]:0.056437)[&label=0]:0.025041)[&label=1]:0.005711)[&label=0]:0.048479)[&label=0]:0.009765)[&label=0]:0.047959,((Palpbili:0.407378,(Roomtrun:0.271568,(Guilthet:0.202989,Cryppara:0.145317)[&label=100]:0.248606)[&label=59]:0.072621)[&label=16]:0.054156,(Tsukglob:0.443004,(Gloewitr:0.236076,(Cyanpara:0.16453,GlauNost:0.528909)[&label=44]:0.022152)[&label=65]:0.122635)[&label=23]:0.032875)[&label=7]:0.057172)[&label=0]:0.010748)[&label=0]:0.029561)[&label=0]:0.026271,(((ParvMONO:0.489713,(Bass1:0.38587,(PC5:0.50581,PCBtrin:0.310469)[&label=34]:0.181212)[&label=10]:0.089253)[&label=9]:0.100472,((Lenilimo:0.312341,(DiphSRT:1.0E-6,Diph30K:1.0E-6)[&label=100]:0.573618)[&label=34]:0.103213,(Andagodo:0.426934,(Trypbruc:0.836603,test_perk161:0.586197)[&label=68]:0.216659)[&label=11]:0.042427)[&label=4]:0.044199)[&label=0]:0.058634,(CochMINU:0.447651,(FontBI:0.491473,((Schimans:0.542279,Taensoli:0.998028)[&label=78]:0.334516,((TurkRosc:0.345317,(RoscUACE:0.19788,(CCARosc:0.313608,(GuttFOLD:0.245344,(GuttMIGQ:1.0E-6,GuttRUIZ:1.0E-6)[&label=100]:0.118472)[&label=63]:0.076691)[&label=69]:0.038456)[&label=74]:0.098437)[&label=89]:0.171248,Ts42Rosc:0.47925)[&label=99]:0.27651)[&label=25]:0.091331)[&label=12]:0.092954)[&label=2]:0.09418)[&label=0]:0.022519)[&label=0]:0.018497,(Raphambi:0.446294,(NYK3C:0.395596,(MalaCali:0.292994,MalaJako:0.331856)[&label=90]:0.173915)[&label=2]:0.036781)[&label=2]:0.076039)[&label=0]:0.036159,(Porpyezo:0.591434,CyanMero:0.17031)[&label=41]:0.3545)[&label=2]:0.056875)[&label=11]:0.077373)[&label=2]:0.031899,((Rhizsaxo:0.362643,((((Ptolbull:0.219245,(Amoeprot:0.261503,Coprprot:0.233931)[&label=90]:0.110002)[&label=92]:0.168805,((((Pyxioper:0.23909,(Helespha:0.141048,HsylLAHR:0.145822)[&label=100]:0.217405)[&label=59]:0.07036,(Crypoper:0.391176,((HelLAHR:0.074366,(Nebela0:0.077722,PcarLAHR:0.029792)[&label=100]:0.102753)[&label=100]:0.171103,(Hyalpapi:0.29591,((DiffUSP:0.144117,(DiffspD2:0.068295,Diffbry1:0.061315)[&label=62]:0.014787)[&label=85]:0.049351,((Cyclsp1:0.147218,(((((Penacfsp:1.0E-6,Arcegibb:1.0E-6)[&label=24]:1.0E-6,Arcevulg:1.0E-6)[&label=97]:1.0E-6,LesqspL8:1.0E-6)[&label=88]:0.010495,Micrcfsp:0.033817)[&label=100]:0.12628,CaerLAHR:0.307881)[&label=48]:0.033197)[&label=54]:0.046243,Netzovif:0.108901)[&label=28]:0.013114)[&label=64]:0.05238)[&label=96]:0.129798)[&label=49]:0.077884)[&label=24]:0.041374)[&label=61]:0.120836,Spumosp:0.21361)[&label=85]:0.06262,NolaAFSM:0.806814)[&label=24]:0.06868)[&label=32]:0.064202,((MystPP16:0.022376,Echiexud:0.009406)[&label=100]:0.204815,MicrA134:0.484821)[&label=95]:0.170766)[&label=21]:0.041607,Flabcita:0.865717)[&label=14]:0.030461)[&label=13]:0.062418,((Vermverm:0.027253,Deutalgo:0.032513)[&label=100]:0.367341,((Diploch3:0.369766,(((Amphizo8:1.0E-6,Amphiz10:1.0E-6)[&label=35]:1.0E-6,Amphizo2:1.0E-6)[&label=100]:0.014151,(Amphizo9:1.0E-6,Amphizo7:1.0E-6)[&label=100]:0.013015)[&label=100]:0.444689)[&label=51]:0.093257,(TricYANA:0.140084,(TricAmI7:1.0E-6,Tri40319:1.0E-6)[&label=100]:0.110749)[&label=100]:0.248739)[&label=48]:0.050973)[&label=26]:0.066899)[&label=7]:0.046055)[&label=0]:0.034059)[&label=0]:0.029922)[&label=0]:0.025,(Masteilh:0.550581,((Rhizlibe:1.0E-6,Rhizelon:1.0E-6)[&label=100]:0.594829,(Mastabdu:0.378524,(Mastbala:1.0E-6,MastBala:1.0E-6)[&label=100]:0.433278)[&label=94]:0.204092)[&label=49]:0.094374)[&label=87]:0.262088)[&label=1]:0.024402)[&label=16]:0.086344,(((((GoceYONA:1.0E-6,Gocefonb:1.0E-6)[&label=100]:0.188782,(EndoLINK:0.009074,Endozona:0.125936)[&label=100]:0.242174)[&label=92]:0.135037,(PellCATA:1.0E-6,Pellcat2:1.0E-6)[&label=100]:0.356758)[&label=45]:0.086997,(Sterramo:0.307434,(Protbohe:0.072604,(Protarac:0.147209,Luaphula:0.084129)[&label=98]:0.111454)[&label=58]:0.055934)[&label=61]:0.053553)[&label=50]:0.04471,(BmanGMTD:0.003657,Bma2GMTD:1.0E-6)[&label=100]:0.192341)[&label=54]:0.065763)[&label=8]:0.019632)[&label=43]:0.090351,Mycagemm:0.46969)[&label=75]:0.033751,(Stenlima:0.135136,Stensten:0.149314)[&label=91]:0.070489)[&label=72]:0.053724)[&label=96]:0.102671,AculGMTD:0.031522)[&label=48]:0.014412,AroyGMTD:0.020973)[&label=64]:0.011335)[&label=26]:0.013958)[&label=58]:0.018564)[&label=93]:0.008356,(AmauGMTD:1.0E-6,Aca2GMTD:1.0E-6)[&label=97]:1.0E-6)[&label=57]:1.0E-6,AquiGMTD:1.0E-6)[&label=59]:1.0E-6)[&label=59]:1.0E-6,(Aca3GMTD:1.0E-6,(Acancast:0.004486,((ApeaGMTD:1.0E-6,ApalGMTD:0.003753)[&label=57]:2.8E-5,Apo2GMTD:1.0E-6)[&label=58]:4.08E-4)[&label=54]:1.0E-6)[&label=48]:1.0E-6,Apo1GMTD:1.0E-6);
+end;
+
+begin figtree;
+	set appearance.backgroundColorAttribute="Default";
+	set appearance.backgroundColour=#ffffff;
+	set appearance.branchColorAttribute="User selection";
+	set appearance.branchColorGradient=false;
+	set appearance.branchLineWidth=1.0;
+	set appearance.branchMinLineWidth=0.0;
+	set appearance.branchWidthAttribute="Fixed";
+	set appearance.foregroundColour=#000000;
+	set appearance.hilightingGradient=false;
+	set appearance.selectionColour=#2d3680;
+	set branchLabels.colorAttribute="User selection";
+	set branchLabels.displayAttribute="Branch times";
+	set branchLabels.fontName=".SF NS Text";
+	set branchLabels.fontSize=8;
+	set branchLabels.fontStyle=0;
+	set branchLabels.isShown=false;
+	set branchLabels.significantDigits=4;
+	set layout.expansion=0;
+	set layout.layoutType="RECTILINEAR";
+	set layout.zoom=0;
+	set legend.attribute="label";
+	set legend.fontSize=10.0;
+	set legend.isShown=false;
+	set legend.significantDigits=4;
+	set nodeBars.barWidth=4.0;
+	set nodeBars.displayAttribute=null;
+	set nodeBars.isShown=false;
+	set nodeLabels.colorAttribute="User selection";
+	set nodeLabels.displayAttribute="Node ages";
+	set nodeLabels.fontName=".SF NS Text";
+	set nodeLabels.fontSize=8;
+	set nodeLabels.fontStyle=0;
+	set nodeLabels.isShown=false;
+	set nodeLabels.significantDigits=4;
+	set nodeShapeExternal.colourAttribute="User selection";
+	set nodeShapeExternal.isShown=false;
+	set nodeShapeExternal.minSize=10.0;
+	set nodeShapeExternal.scaleType=Width;
+	set nodeShapeExternal.shapeType=Circle;
+	set nodeShapeExternal.size=4.0;
+	set nodeShapeExternal.sizeAttribute="Fixed";
+	set nodeShapeInternal.colourAttribute="User selection";
+	set nodeShapeInternal.isShown=false;
+	set nodeShapeInternal.minSize=10.0;
+	set nodeShapeInternal.scaleType=Width;
+	set nodeShapeInternal.shapeType=Circle;
+	set nodeShapeInternal.size=4.0;
+	set nodeShapeInternal.sizeAttribute="Fixed";
+	set polarLayout.alignTipLabels=false;
+	set polarLayout.angularRange=0;
+	set polarLayout.rootAngle=0;
+	set polarLayout.rootLength=100;
+	set polarLayout.showRoot=true;
+	set radialLayout.spread=0.0;
+	set rectilinearLayout.alignTipLabels=false;
+	set rectilinearLayout.curvature=0;
+	set rectilinearLayout.rootLength=100;
+	set scale.offsetAge=0.0;
+	set scale.rootAge=1.0;
+	set scale.scaleFactor=1.0;
+	set scale.scaleRoot=false;
+	set scaleAxis.automaticScale=true;
+	set scaleAxis.fontSize=8.0;
+	set scaleAxis.isShown=false;
+	set scaleAxis.lineWidth=1.0;
+	set scaleAxis.majorTicks=1.0;
+	set scaleAxis.minorTicks=0.5;
+	set scaleAxis.origin=0.0;
+	set scaleAxis.reverseAxis=false;
+	set scaleAxis.showGrid=true;
+	set scaleBar.automaticScale=true;
+	set scaleBar.fontSize=10.0;
+	set scaleBar.isShown=true;
+	set scaleBar.lineWidth=1.0;
+	set scaleBar.scaleRange=0.0;
+	set tipLabels.colorAttribute="User selection";
+	set tipLabels.displayAttribute="Names";
+	set tipLabels.fontName=".SF NS Text";
+	set tipLabels.fontSize=8;
+	set tipLabels.fontStyle=1;
+	set tipLabels.isShown=true;
+	set tipLabels.significantDigits=4;
+	set trees.order=false;
+	set trees.orderType="increasing";
+	set trees.rooting=false;
+	set trees.rootingType="User Selection";
+	set trees.transform=false;
+	set trees.transformType="cladogram";
+end;
+

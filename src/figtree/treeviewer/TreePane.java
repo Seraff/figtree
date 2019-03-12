@@ -793,6 +793,15 @@ public class TreePane extends JComponent implements PainterListener, Printable {
         }
     }
 
+    public void hilightSpecificNode(Node node, Color color) {
+        double height = Utils.getMinNodeHeight(tree, node);
+        Object[] values = new Object[] { 1, -1.0, color };
+        node.setAttribute(HILIGHT_ATTRIBUTE_NAME, values);
+
+        recalibrate();
+        repaint();
+    }
+
     public void recalculateCollapsedNodes() {
         recalculateCollapsedNodes(tree.getRootNode());
     }
